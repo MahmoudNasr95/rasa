@@ -1,1 +1,0 @@
-/conversational_robot/ngrok.exe
