@@ -1,14 +1,22 @@
 ## intent:add_med
-- Please add medication [x](med_name) to my calender on [Monday](day)
-- Can you remind me to take med [Y](med_name) on [tuesday](day)?
-- I want to add medication [Z](med_name) to my reminders
-- Remind me of medication [alpha](med_name) [tomorrow](day)
-- Please remind me to take medication [beta](med_name) on [Thursday](day)
-- Please add to my calender on [Friday](day) medication [beta](med_name)
-- remind me of to take medication y on [friday](day)
-- remind me of to take medication [y](med_name) on [friday](day)
-- add medication [z](med_name) to my reminders every [sunday](day)
-- remind me to take medication [X](med_name) at [3](number) am
+- Please [add](medActionType) medication [x](med_name) to my calender on [Monday](day)
+- Can you [remind](medActionType:add) me to take med [Y](med_name) on [tuesday](day)?
+- I want to [add](medActionType) medication [Z](med_name) to my reminders
+- [Remind](medActionType:add) me of medication [alpha](med_name) [tomorrow](day)
+- Please [remind](medActionType:add) me to take medication [beta](med_name) on [Thursday](day)
+- Please [add](medActionType) to my calender on [Friday](day) medication [beta](med_name)
+- [remind](medActionType:add) me of to take medication y on [friday](day)
+- [remind](medActionType:add) me of to take medication [y](med_name) on [friday](day)
+- [add](medActionType) medication [z](med_name) to my reminders every [sunday](day)
+- [remind](medActionType:add) me to take medication [X](med_name) at [3](number) am
+- [Stop](medActionType:delete) reminding me of medication [panadol](med_name) on [Friday](day)
+- [Delete](medActionType) [strepsils](med_name) from my medication reminders
+- [Remove](medActionType:delete) [x](med_name) from medications
+- Can you please [delete](medActionType) from my medications on [Thursday](day) 
+- I want to [remove](medActionType:delete) from my reminders for medications on [saturday](day)
+- Please [stop](medActionType:delete) medication [X](med_name) reminders
+- I do not want to be reminded of [Beta](med_name) again
+
 
 ## intent:affirm
 - yes

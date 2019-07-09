@@ -23,6 +23,7 @@ entities:
 - day
 - direction
 - med_name
+- medActionType
 - move_type
 - name
 - number

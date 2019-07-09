@@ -1,0 +1,14 @@
+set PYTHONPATH=%PYTHONPATH%;C:\Users\Mahmoud\rasa\social_robot;
+
+# Google Project
+conversational-bot-b320e
+gactions test --action_package action.json --project conversational-bot-b320e
+gactions update --action_package action.json --project conversational-bot-b320e
+
+# to test
+curl -XPOST http://localhost:5005/webhooks/google_assistant/webhook  -d '{"sender": "user1", "message": "hello"}'  -H "Content-type: application/json"
+
+# 
+Sending request with post data: {"user":{"locale":"en-US","lastSeen":"2019-07-05T05:13:24Z","userVerificationStatus":"VERIFIED"},"conversation":{"conversationId":"ABwppHFROATv920FGFG5o9te6gKVZUJo-6OSisGR4I2wiMVFA5nB2zPLNcy00V34_0kb0FWqpkPo22pa2TQGsozrLLdftAiZ","type":"NEW"},"inputs":[{"intent":"actions.intent.MAIN","rawInputs":[{"inputType":"KEYBOARD","query":"talk to my Social Robot"}]}],"surface":{"capabilities":[{"name":"actions.capability.SCREEN_OUTPUT"},{"name":"actions.capability.WEB_BROWSER"},{"name":"actions.capability.AUDIO_OUTPUT"},{"name":"actions.capability.MEDIA_RESPONSE_AUDIO"},{"name":"actions.capability.ACCOUNT_LINKING"}]},"isInSandbox":true,"availableSurfaces":[{"capabilities":[{"name":"actions.capability.SCREEN_OUTPUT"},{"name":"actions.capability.WEB_BROWSER"},{"name":"actions.capability.AUDIO_OUTPUT"}]}],"requestType":"SIMULATOR"}.
+
+# now check the part where r.json is created.. you know that it gets the correct intent, why does it give the error?

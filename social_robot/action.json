@@ -9,7 +9,7 @@
       "intent": {
         "name": "actions.intent.MAIN",
         "trigger": {
-          "queryPatterns": ["Talk to my Social Robot"]
+          "queryPatterns": ["talk to my Social Robot"]
         }
       }
     },
@@ -25,15 +25,17 @@
           "queryPatterns": []
         }
       }
-    }],
+    }], 
   "conversations": {
     "welcome": {
       "name": "welcome",
-      "url": "https://834531fc.ngrok.io/webhooks/google_assistant/webhook"
+      "url": "https://15bed78d.ngrok.io/webhooks/google_assistant/webhook",
+      "fulfillmentApiVersion": 2
     },
     "rasa_intent": {
         "name": "rasa_intent",
-        "url": "https://834531fc.ngrok.io/webhooks/google_assistant/webhook"
+        "url": "https://15bed78d.ngrok.io/webhooks/google_assistant/webhook",
+        "fulfillmentApiVersion": 2
     }
   },
   "locale": "en"

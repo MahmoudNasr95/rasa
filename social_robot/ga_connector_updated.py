@@ -101,29 +101,33 @@ class GoogleConnector(InputChannel):
 	#    self.out_channel = CustomOutput(url, access_token)
 
 	def blueprint(self, on_new_message: Callable[[UserMessage], Awaitable[None]]):
-		custom_webhook = Blueprint(
-			"custom_webhook_{}".format(type(self).__name__),
-			inspect.getmodule(self).__name__,
-		)
-
+		# custom_webhook = Blueprint(
+		# 	"custom_webhook_{}".format(type(self).__name__),
+		# 	inspect.getmodule(self).__name__,
+		# )
+		custom_webhook = Blueprint("custom_webhook",__name__)
 		# noinspection PyUnusedLocal
 		@custom_webhook.route("/", methods=["GET"])
 		async def health(request: Request):
 			return response.json({"status": "ok"})
 
-		@custom_webhook.route("/webhook", methods=['POST'])
-		async def receive(request: Request):
+		@custom_webhook.route("/webhook", methods=["POST"])
+		async def webhook(request: Request):
 			payload = request.json		
-			sender_id = payload['user']['userId']
+			# print(payload)
+			# sender_id = payload['user']['userId']
+			sender_id = "default"
 			intent = payload['inputs'][0]['intent'] 			
 			text = payload['inputs'][0]['rawInputs'][0]['query'] 		
+			# print(intent)
 			if intent == 'actions.intent.MAIN':	
-				message = "<speak>Hello! <break time=\"1\"/> Welcome to the Rasa-powered Google Assistant skill. You can start by saying hi."			 
+				message = "<speak>Hello! <break time=\"1\"/> Welcome to the Rasa-powered Google Assistant skill. You can start by saying hi.</speak>"			 
 			else:
-				out = CollectingOutputChannel()			
+				out = CollectingOutputChannel()	# collect the bot responses Core creates while the bot is processing your messages		
 				on_new_message(UserMessage(text, out, sender_id, input_channel=self.name()))
 				responses = [m["text"] for m in out.messages]
 				message = responses[0]	
+
 			r = json.dumps(
 				{
 				  "conversationToken": "{\"state\":null,\"data\":{}}",
@@ -145,6 +149,8 @@ class GoogleConnector(InputChannel):
 				  }
 				 ]
 				})
+			print(message)
+			print(r)
 			return r				
 				
 		return custom_webhook
